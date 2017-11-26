@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<title>JSF 2.0 Hello World</title>
+</h:head>
+<h:body>
+	<h:form>
+		<h:panelGrid columns="2">
+			<h:outputText value="Value property:" />
+			<h:outputText value="#{eventListenerBean.value}" />
+
+			<h:outputText value="new Value property:" />
+			<h:outputText value="#{eventListenerBean.valueNew}" />
+
+			<h:outputText value="old Value property:" />
+			<h:outputText value="#{eventListenerBean.valueOld}" />
+
+			<h:inputText id="valueTextField"
+				value="#{eventListenerBean.valueNew}"
+				valueChangeListener="#{eventListenerBean.valueChangeMethod}" />
+			<h:outputText value="" />
+
+			<h:commandButton value="send action"
+				action="#{eventListenerBean.actionMethod}" />
+			<h:commandButton value="trigger listener"
+				actionListener="#{eventListenerBean.listenerMethod}" />
+				
+			<h:outputLabel id="output" value="Der eingegebene Text ist: #{eventListenerBean.ajaxValue}" /><br/>
+			<h:inputText value="#{eventListenerBean.ajaxValue}">
+				<f:ajax render="output" />
+			 </h:inputText>
+		</h:panelGrid>
+	</h:form>
+</h:body>
+</html>
